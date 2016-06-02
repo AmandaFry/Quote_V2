@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+<head> 
+    <meta charset="UTF-8">
+	<title>Qoute for the day</title>
+	<meta name="description" content="Collection of quotes">
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'quote/AmandaTemplate.css' %}">
+</head>
+<body>	
+    <div class="container">
+        <div class="header">
+            <h1><span>(Django) </span> Quotes library</h1>
+            <h3>Assigment - optional</h3>
+            <div class="descr">
+                <p>Assigment description:</p>
+                <p>Display quotes per request or timed</p>
+                <ul>                    
+                    <li>Display quote</li>
+                </ul>
+            </div>
+        </div><!-- end of header content-->
+        <div class="maincontent">
+            <div class="actions">
+                <a class='rows' href="/new">Add new</a>
+                <a class='rows' href="/clear">Begining</a>
+                <a class='rows' href="/">Next</a>
+                <a class='rows' href="/updateMe">Update</a>
+            </div>
+            <div class='quote'>
+                <h1>{{ quote.quote }}</h1>
+            </div>
+            <div class="other">
+                <h3>{{ quote.author }}</h3>
+                <p>Category: {{quote.category_id.category}}</p>
+            </div>
+
+        </div><!-- end of main content-->
+        <div class="footer">
+            <p>created by: Amanda Fry</p>
+            <a class="footerSpace" href="mailto:FeAmandaF@hotmail.com">FeAmandaF@hotmail.com</a>
+            <a href="https://www.linkedin.com/in/amandafry1">Amanda's LinkedIn profile</a>
+        </div><!-- end of footer -->
+      </div><!-- end of container -->
+</body>
+</html>
