@@ -46,7 +46,7 @@ def addNew(request):
 	print qouteforme
 	print authorforme
 	# print catid
-	print ("*" *20)
+	print ("%" *20)
 	return redirect ('/')
 
 # def showOne(request):
