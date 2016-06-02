@@ -41,12 +41,12 @@ def addNew(request):
 	qouteforme = request.POST['quote']
 	authorforme = request.POST['author']
 	# catid = request.POST.get("categid", "")
-	print ("*" *20)
+	print ("*" *25)
 	print 'I read from the form'
 	print qouteforme
 	print authorforme
 	# print catid
-	print ("%" *20)
+	print ("*" *25)
 	return redirect ('/')
 
 # def showOne(request):
