@@ -25,13 +25,13 @@
         </div><!-- end of header content-->
         <div class="maincontent">
             <h1>new page</h1> 
-            <form action="/addNew" method="post">
+            <form action="{% url 'addNew' %}" method="post">
             {% csrf_token %}
-                Quote: <input type="text" name="quote">
+                Quote: <input type="text" name="quote" style="width: 850px;">
                 Author: <input type="text" name="author">
                 <select name="categid">
                     {% for category in categories %}
-                    <option value="{{category.id }}">{{ category.category}} - {{category.id }}</option>
+                    <option value="{{category.id }}">{{ category.category}}</option>
                     {% endfor %}
                 </select>
                 <input type="submit" value="Add new">

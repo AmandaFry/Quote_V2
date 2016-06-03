@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, Http404
 from .models import Category, Quote
-
+from django.utils import timezone
 
 
 def index(request):
@@ -40,11 +40,15 @@ def new(request):
 def addNew(request):
 	qouteforme = request.POST['quote']
 	authorforme = request.POST['author']
-	# catid = request.POST.get("categid", "")
+	catid = request.POST.get("categid", "")
+	catidInsert = Category.objects.get(id=catid)
+	newquote = Quote(quote=qouteforme, author=authorforme, category_id=catidInsert, created_at=timezone.now(), updated_at=timezone.now())
+	newquote.save()
+	request.session['counter1'] = Quote.objects.count()
 	print ("*" *25)
-	print 'I read from the form'
-	print qouteforme
-	print authorforme
+	print catidInsert
+	# print qouteforme
+	# print authorforme
 	# print catid
 	print ("*" *25)
 	return redirect ('/')
