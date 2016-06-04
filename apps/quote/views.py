@@ -12,25 +12,19 @@ def index(request):
 			print request.session['counter1']
 		else:
 			request.session['count'] = 1
-			request.session['counter1'] = Quote.objects.count()
+			# request.session['counter1'] = Quote.objects.count()
 	except:#this will only happens one, if you don't have this the first time the page will not render
 		request.session['count'] = 1
 
-	secondq = Quote.objects.get(id=request.session['count'])
+	firstq = Quote.objects.get(id=request.session['count'])
 
  	context = {
- 		"quote" : secondq,
+ 		"quote" : firstq,
  	}
 	return render(request, 'quote/index.html', context)
 
-# def updateMe(request):
-# 	request.session['counter1'] = Quote.objects.count()
-# 	print ("&" *20)
-# 	print request.session['counter1']
-# 	print ("&" *20)
-# 	return redirect('/')
-
 def new(request):
+	#brings back all the categroies and display it drop down list
 	allcategories = Category.objects.all()
 	context = {
 		'categories' : allcategories,
@@ -38,20 +32,42 @@ def new(request):
 	return render(request, 'quote/new.html', context)
 
 def addNew(request):
+	#read in from - request.POST is request.form
 	qouteforme = request.POST['quote']
 	authorforme = request.POST['author']
+	#I was not able to use the category id directly ... 
 	catid = request.POST.get("categid", "")
+	#...therefore I needed to call its instance before inserting to table
 	catidInsert = Category.objects.get(id=catid)
+	#create what to insert into Quote table
 	newquote = Quote(quote=qouteforme, author=authorforme, category_id=catidInsert, created_at=timezone.now(), updated_at=timezone.now())
+	#the actul insert statment
 	newquote.save()
+	#update the counter1 the number of records in the db
 	request.session['counter1'] = Quote.objects.count()
-	print ("*" *25)
-	print catidInsert
-	# print qouteforme
-	# print authorforme
-	# print catid
-	print ("*" *25)
 	return redirect ('/')
+
+
+def edit(request):
+	editq = Quote.objects.get(id=request.session['count'])
+	#trying to preselect the category as a default that was assigned to the quote
+	# selected_cat = Category.objects.all().filter(category=editq.category_id.category)
+	# selected_cat = Category.objects.get(id=editq.category_id.category)
+	# print selected_cat
+	# selected_cat = Category.objects.get(id=6)
+	# selected_cat = 6
+	# print ("*" *20)
+	# print selected_cat
+	# print ("*" *20)
+	allcategories = Category.objects.all()
+	context = {
+ 		'quote' : editq,
+ 		# 'selected_category' : selected_cat,
+ 		'categories' : allcategories,
+
+ 	}
+	return render(request, 'quote/edit.html', context)
+
 
 # def showOne(request):
 # 	print ("*" *20)

@@ -13,28 +13,26 @@
             <h1><span>(Django) </span> Quotes library</h1>
             <h3>Assigment - optional</h3>
             <div class="descr">
-                <p>Assigment description:</p>
-                <p>Display quotes per request or timed</p>
-                <ul>
-                    <li>Display quote</li>
-                    <li>Able to enter a new quote - admin only</li>
-                    <li>Update quote - admin only</li>
-                    <li>Delte quote - admin only</li>
-                </ul>
+                <h2>Edit Page</h2>
             </div>
         </div><!-- end of header content-->
         <div class="maincontent">
-            <!-- <form action="/tryOne" method="post">
-            {% csrf_token %}
-                <h1>{{ quote.quote }}</h1>
-                <h3>{{ quote.author }}</h3>
-                <p>Category: {{quote.category_id.category}}</p>
-                <input type="submit" value="Click Butoon">
-            </form> -->
-
-
-            <h1>showone page</h1> 
-            
+            <div class="rows2">
+                    Quote: <input type="text" name="quote" placeholder="{{ quote.quote }}" style="width: 830px;">
+                </div>
+                <div class="rows2">
+                    Author: <input type="text" name="author" placeholder="{{ quote.author }}">
+                </div>
+                <div class="rows2">
+                    <p>current category: {{quote.category_id.category}}</p>
+                </div>
+                <div class="rows2">
+                    Category: <select name="categid">
+                        {% for category in categories %}
+                            <option value="{{category.id }}">{{ category.category}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
         </div><!-- end of main content-->
         <div class="footer">
             <p>created by: Amanda Fry</p>

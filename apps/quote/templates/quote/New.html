@@ -13,28 +13,29 @@
             <h1><span>(Django) </span> Quotes library</h1>
             <h3>Assigment - optional</h3>
             <div class="descr">
-                <p>Assigment description:</p>
-                <p>Display quotes per request or timed</p>
-                <ul>
-                    <li>Display quote</li>
-                    <li>Able to enter a new quote - admin only</li>
-                    <li>Update quote - admin only</li>
-                    <li>Delte quote - admin only</li>
-                </ul>
+                <h2>Add New Page</h2>
             </div>
         </div><!-- end of header content-->
         <div class="maincontent">
-            <h1>new page</h1> 
-            <form action="{% url 'addNew' %}" method="post">
+            <form class="newquote" action="{% url 'addNew' %}" method="post">
             {% csrf_token %}
-                Quote: <input type="text" name="quote" style="width: 850px;">
-                Author: <input type="text" name="author">
-                <select name="categid">
-                    {% for category in categories %}
-                    <option value="{{category.id }}">{{ category.category}}</option>
-                    {% endfor %}
-                </select>
-                <input type="submit" value="Add new">
+                <h2>Please enter a new quote</h2>
+                <div class="rows2">
+                    Quote: <input type="text" name="quote" style="width: 830px;">
+                </div>
+                <div class="rows2">
+                    Author: <input type="text" name="author">
+                </div>
+                <div class="rows2">
+                    Category: <select name="categid">
+                        {% for category in categories %}
+                        <option value="{{category.id }}">{{ category.category}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="rowsButtons">
+                    <input type="submit" value="Add new">
+                </div>
             </form>
 
         </div><!-- end of main content-->

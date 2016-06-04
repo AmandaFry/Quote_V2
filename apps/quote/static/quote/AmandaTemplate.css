@@ -64,6 +64,20 @@
 				margin: 0px 20px 0px 10px;
 			}
 
+		.newquote{
+			padding: 35px 0px 0px 15px;
+		}
+			.newquote h2{
+				margin-bottom: 30px;
+			}
+			.rows2{
+				margin: 10px 0px 10px 25px;
+			}
+
+			.rowsButtons{
+				margin: 10px 0px 0px 25px;
+			}
+
 	.footer{
 		width:970px;
 		height: 100px:;
