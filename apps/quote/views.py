@@ -11,15 +11,25 @@ def index(request):
 			print 'I am ', request.session['count'], ' of ', request.session['counter1'], ' of quotes'
 		else:
 			request.session['count'] = 1
+<<<<<<< HEAD
 	except:#this will only happens one, if you don't have this the first time the page will not render
 		request.session['count'] = 1
 
 	secondq = Quote.objects.get(id=request.session['count'])
+=======
+			# request.session['counter1'] = Quote.objects.count()
+	except:#this will only happens one, if you don't have this the first time the page will not render
+		request.session['count'] = 1
+
+	firstq = Quote.objects.get(id=request.session['count'])
+
+>>>>>>> nextv
  	context = {
- 		"quote" : secondq,
+ 		"quote" : firstq,
  	}
 	return render(request, 'quote/index.html', context)
 
+<<<<<<< HEAD
 
 def clear(request):
 	#returns to first record
@@ -29,6 +39,10 @@ def clear(request):
 
 def new(request):
 	# bring up all category the records and render add new page
+=======
+def new(request):
+	#brings back all the categroies and display it drop down list
+>>>>>>> nextv
 	allcategories = Category.objects.all()
 	context = {
 		'categories' : allcategories,
@@ -37,7 +51,11 @@ def new(request):
 
 
 def addNew(request):
+<<<<<<< HEAD
 	#add the new record - read in from - request.POST is request.form
+=======
+	#read in from - request.POST is request.form
+>>>>>>> nextv
 	qouteforme = request.POST['quote']
 	authorforme = request.POST['author']
 	#I was not able to use the category id directly ... 
@@ -50,6 +68,7 @@ def addNew(request):
 	newquote.save()
 	#update the counter1 the number of records in the db
 	request.session['counter1'] = Quote.objects.count()
+<<<<<<< HEAD
 	print request.session['counter1']
 	#counterModified is needed in the successAE view
 	request.session['counterModified'] = request.session['counter1']
@@ -119,4 +138,35 @@ def favorite(request):
 
 
 
+=======
+	return redirect ('/')
+
+
+def edit(request):
+	editq = Quote.objects.get(id=request.session['count'])
+	#trying to preselect the category as a default that was assigned to the quote
+	# selected_cat = Category.objects.all().filter(category=editq.category_id.category)
+	# selected_cat = Category.objects.get(id=editq.category_id.category)
+	# print selected_cat
+	# selected_cat = Category.objects.get(id=6)
+	# selected_cat = 6
+	# print ("*" *20)
+	# print selected_cat
+	# print ("*" *20)
+	allcategories = Category.objects.all()
+	context = {
+ 		'quote' : editq,
+ 		# 'selected_category' : selected_cat,
+ 		'categories' : allcategories,
+
+ 	}
+	return render(request, 'quote/edit.html', context)
+
+
+# def showOne(request):
+# 	print ("*" *20)
+# 	print 'I am inside the redirect'
+# 	print ("*" *20)
+# 	return render(request, 'quote/showOne.html')
+>>>>>>> nextv
 
