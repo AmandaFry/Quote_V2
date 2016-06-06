@@ -22,10 +22,11 @@
         </div><!-- end of header content-->
         <div class="maincontent">
             <div class="actions">
-                <a class = 'rows' href="{% url 'new' %}">Add new</a>
-                <a class='rows' href="/clear">Begining</a>
-                <a class='rows' href="/">Next</a>
-                <a class='rows' href="/updateMe">Update</a>
+                <a class='rows' href="{% url 'clear' %}">Begining</a>
+                <a class='rows' href="{% url 'index' %}">Next</a>
+                <a class ='rows' href="{% url 'new' %}">Add new</a>
+                <a class='rows' href="{% url 'edit' %}">Edit</a>
+                <a class='rows' href="{% url 'favorite' %}">Favorite</a>
             </div>
             <div class='quote'>
                 <h1>{{ quote.quote }}</h1>

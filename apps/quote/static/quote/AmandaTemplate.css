@@ -46,7 +46,7 @@
 		min-height: 400px;
 		padding: 15px;
 	}	
-		.quote{
+			.quote{
 			padding-top: 30px;
 			text-align: center;
 			font-size: 25px;
@@ -62,6 +62,23 @@
 		}
 			.rows{
 				margin: 0px 20px 0px 10px;
+			}
+			
+		.newquote{
+			padding: 35px 0px 0px 15px;
+		}
+			.newquote h2{
+				margin-bottom: 30px;
+			}
+			.rows2{
+				margin: 10px 0px 10px 25px;
+			}
+
+			.buttons{
+				margin: 0px 15px 0px 0px;
+				padding: 3px 7px 3px 7px;
+				border-radius: 3px;
+				background-color:#66c2ff;
 			}
 
 	.footer{
