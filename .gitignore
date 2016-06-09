@@ -1,2 +1,3 @@
 *.py[co]
 *sqlite3
+apps/quote/templates/quote/Edit.html~HEAD

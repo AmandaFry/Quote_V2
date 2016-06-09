@@ -14,4 +14,4 @@ class Quote(models.Model):
 	updated_at = models.DateTimeField(auto_now = True)
 	category_id = models.ForeignKey('Category')
 	def __unicode__(self):
-		return self.quote
+		return str(self.pk)

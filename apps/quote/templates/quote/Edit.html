@@ -13,33 +13,33 @@
             <h1><span>(Django) </span> Quotes library</h1>
             <h3>Assigment - optional</h3>
             <div class="descr">
-                <h2>Add New Page</h2>
+                <h2>Edit Page</h2>
             </div>
         </div><!-- end of header content-->
         <div class="maincontent">
-            <form class="newquote" action="{% url 'addNew' %}" method="post">
+            <form action="{% url 'addEdit' %}" method="post">
             {% csrf_token %}
-                <h2>Please enter a new quote</h2>
                 <div class="rows2">
-                    Quote: <input type="text" name="quote" style="width: 830px;">
+                    Quote: <input type="text" name="quote" value="{{ quote.quote }}" style="width: 830px;">
                 </div>
                 <div class="rows2">
-                    Author: <input type="text" name="author">
+                    Author: <input type="text" name="author" value="{{ quote.author }}">
+                </div>
+                <div class="rows2">
+                    <p>current category: {{quote.category_id.category}}</p>
                 </div>
                 <div class="rows2">
                     Category: <select name="categid">
                         {% for category in categories %}
-                        <option value="{{category.id }}">{{ category.category}}</option>
+                            <option value="{{category.id }}">{{ category.category}}</option>
                         {% endfor %}
                     </select>
                 </div>
-                <!-- <div class="rowsButtons"> -->
                 <div class="rows2">
                     <input class="buttons" type="submit" value="Cancel"><a href="/"></a>
-                    <input class="buttons" type="submit" value="Add New">
+                    <input class="buttons" type="submit" name="Update">
                 </div>
             </form>
-
         </div><!-- end of main content-->
         <div class="footer">
             <p>created by: Amanda Fry</p>
